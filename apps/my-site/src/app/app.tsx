@@ -1,14 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 
-import NxWelcome from './nx-welcome';
+import {PageTitle} from '@nx-sandbox/ui-header';
 
 import { Route, Routes, Link } from 'react-router-dom';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="my-site" />
+    <PageTitle />
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
