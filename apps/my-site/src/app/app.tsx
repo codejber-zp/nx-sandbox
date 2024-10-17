@@ -1,18 +1,24 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-import {PageTitle} from '@nx-sandbox/ui-header';
-
+import { useState, useEffect } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
+import { PageTitle } from '@nx-sandbox/ui-header';
+import { MessageRoute, Message, API_URL } from '@nx-sandbox/api-interface';
 
 export function App() {
+  const [message, setData] = useState<Message>({text: "no fetch yet"});
+
+  useEffect(() => {
+    const getMessage = async () => {
+      const res = await fetch(`${API_URL}${MessageRoute.GET_INIT_MESSAGE}`);
+      const body = await res.json() as Message;
+      setData(body);
+    };
+    getMessage();
+  }, []);
 
   return (
     <div>
       <PageTitle />
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-
+      {message.text}
       <div role="navigation">
         <ul>
           <li>

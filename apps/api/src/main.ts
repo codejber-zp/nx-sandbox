@@ -1,22 +1,13 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import express from 'express';
 import * as path from 'path';
+import { Message, MessageRoute } from '@nx-sandbox/api-interface';
 
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.get('/', (req, res) => {
-  console.log(req.url);
-});
-
-app.get('/api', (req, res) => {
-  console.log(req.url);
-  res.send({ message: 'Welcome to api!' });
+app.get<Message>(MessageRoute.GET_INIT_MESSAGE, (req, res) => {
+  res.send({ text: 'Welcome to api!' });
 });
 
 const port = process.env.PORT || 3333;

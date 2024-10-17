@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-sandbox/api-interface": ["libs/api-interface/src/index.ts"],
       "@nx-sandbox/ui-header": ["libs/ui-header/src/index.ts"]
     }
   },

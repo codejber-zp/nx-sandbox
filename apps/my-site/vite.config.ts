@@ -10,6 +10,13 @@ export default defineConfig({
   server: {
     port: 4200,
     host: 'localhost',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3333',
+        // to not include /api in the path on the proxy server side
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
   preview: {
     port: 4300,
